@@ -1,10 +1,15 @@
 
+R Spatial Workshop: Chicago Affordable Housing
+==============================================
+
 About this repository
 ---------------------
 
 This repository contains the script produced during the R Spatial Workshop on October 30, 2018. Click on [`chicago-housing-explore.R`](https://github.com/angela-li/chicago-housing/blob/master/chicago-housing-explore.R) above to see the code produced in the workshop.
 
 We'll be building out this script over multiple workshops. Expect more maps soon!
+
+Feel free to email me at <ali6@uchicago.edu> with any questions you have.
 
 Additional resources
 --------------------
@@ -13,4 +18,4 @@ Additional resources
 
 -   To get more familiar with dplyr, there's no better resource than [R for Data Science, chapter 5](https://r4ds.had.co.nz/transform.html). This book in general is *fantastic* and I recommend you give it a look.
 
--   To download more Chicago-related data, go to the [Chicago Data Portal](https://data.cityofchicago.org)here.
+-   To download more Chicago-related data, go to the [Chicago Data Portal](https://data.cityofchicago.org) here.
