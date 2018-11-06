@@ -6,6 +6,8 @@
 library(RSocrata)
 library(dplyr)
 library(ggplot2)
+library(leaflet)
+library(sf)
 
 # Import data -------------------------------------------------------------
 socrata_url <- "https://data.cityofchicago.org/resource/uahe-iimk.csv"
@@ -34,6 +36,7 @@ areas_key <- housing_tbl %>%
   slice(1) %>% 
   select(community_area, community_area_number)
 
+# option  -
 left_join(properties_per_area, 
           areas_key, 
           by = "community_area_number") %>% 
@@ -60,6 +63,21 @@ ggplot(units_per_area, aes(x = total_units)) +
   labs(x = "Total Units By Community Area", y = "Count")
 
 # make a histogram for the number of properties per area
+ggplot(properties_per_area, aes(x = n)) +
+  geom_histogram() +
+  labs(x = "Total Properties By Community Area", y = "Count")
 
+# Make a leaflet map ------------------------------------------------------
+# Ctrl shift m for pipe
+leaflet() %>% 
+  addProviderTiles(providers$CartoDB) %>% 
+  addCircles(lng = housing_tbl$longitude, 
+             lat = housing_tbl$latitude, 
+             popup = housing_tbl$property_name,
+             radius = housing_tbl$units)
 
-names(units_per_area)
+housing_sf <- st_as_sf(housing_tbl, coords = c("longitude", "latitude"))
+
+leaflet() %>% 
+  addProviderTiles(providers$CartoDB) %>% 
+  addCircles(data = housing_sf)
